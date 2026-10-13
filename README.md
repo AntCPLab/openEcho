@@ -1,6 +1,6 @@
-# ECHO: Efficient Covertly-Secure Three-party Computation with Public Verifiability
+# ECHO: Efficient Covertly-Secure Three-party Computation with Applications to Private Machine Learning
 
-This repository contains the experimental code for the paper “ECHO: Efficient Covertly-Secure Three-party Computation with Public Verifiability.” It provides implementations and benchmarking harnesses for the protocols evaluated in the paper across arithmetic and binary settings, optimized for different network and end-to-end objectives.
+This repository contains the experimental code for the [paper](https://eprint.iacr.org/2026/216) ''ECHO: Efficient Covertly-Secure Three-party Computation with Applications to Private Machine Learning.'' It provides implementations and benchmarking harnesses for the protocols evaluated in the paper across arithmetic and binary settings, optimized for different network and end-to-end objectives.
 
 ## Repository Contents (Protocols)
 
