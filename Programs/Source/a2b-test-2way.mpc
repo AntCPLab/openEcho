@@ -1,0 +1,12 @@
+program.use_split(2)
+
+from Compiler.types import *
+from Compiler.library import *
+from Compiler.GC.types import *
+
+sb64 = sbits.get_type(64)
+
+a = sint(73546435)
+b = sb64(a)
+
+print_ln("expected: 73546435, got: %s", b.reveal())

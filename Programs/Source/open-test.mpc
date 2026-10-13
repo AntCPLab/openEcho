@@ -1,0 +1,20 @@
+program.use_trunc_pr = True
+program.use_split(3)
+
+from Compiler.types import *
+from Compiler.library import *
+import random
+
+from Compiler.GC.types import *
+
+sb64 = sbits.get_type(64)
+
+numbers = [random.getrandbits(32) for _ in range(3)]
+a = [sint(x) for x in numbers]
+c = [x.reveal() for x in a]
+
+b = [sb64(x) for x in numbers]
+d = [x.reveal() for x in b]
+
+for x1, x2, x3 in zip(numbers, c, d):
+    print_ln('expected %s, got %s and %s', x1, x2, x3)

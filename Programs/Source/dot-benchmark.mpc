@@ -1,0 +1,21 @@
+from Compiler.types import *
+from Compiler.library import *
+import random
+
+VEC_LENGTH = 1 << 12
+TEST_SIZE = 1 << 10
+ROUNDS = 5
+
+a = Array(VEC_LENGTH, sint)
+b = Array(VEC_LENGTH, sint)
+for i in range(VEC_LENGTH):
+    a[i] = sint(random.getrandbits(32))
+    b[i] = sint(random.getrandbits(32))
+
+for _ in range(ROUNDS):
+    c = Array(TEST_SIZE, sint)
+    for i in range(TEST_SIZE):
+        c[i] = sint.dot_product(a, b)
+    c = sum(c)
+    print_ln("result: %s", c.reveal())
+

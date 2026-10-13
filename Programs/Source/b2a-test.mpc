@@ -1,0 +1,16 @@
+from Compiler.types import *
+from Compiler.GC.types import *
+from Compiler.library import *
+
+import random
+
+program.options_from_args()
+
+sb64 = sbits.get_type(1)
+clears = [random.getrandbits(1) for _ in range(5)]
+a = [sb64(x) for x in clears]
+b = [sint.conv(x) for x in a]
+c = [x.reveal() for x in b]
+
+for x1, x2 in zip(clears, c):
+    print_ln('expected %s, got %s', x1, x2)

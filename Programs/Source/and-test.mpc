@@ -1,0 +1,13 @@
+from Compiler.types import *
+from Compiler.library import *
+from Compiler.GC.types import *
+import random
+
+sb64 = sbits.get_type(64)
+
+a = sb64(12333554)
+b = sb64(12235145)
+
+c = a & b
+print_ln('c = %s', c.reveal())
+print_ln('expected: %s', 12333554 & 12235145)

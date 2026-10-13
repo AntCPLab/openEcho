@@ -1,0 +1,11 @@
+from Compiler.types import *
+from Compiler.library import *
+import random
+
+
+a = sint(12354)
+b = sint(12345)
+
+c = a * b
+print_ln('c = %s', c.reveal())
+print_ln('expected: %s', 12354 * 12345)

@@ -1,0 +1,14 @@
+from Compiler.types import *
+from Compiler.library import *
+
+a = sint(123)
+b = sint(234)
+
+c = a * b
+d = a + b
+
+e = c.reveal()
+
+f = d + e
+
+print_ln("%s", f.reveal())

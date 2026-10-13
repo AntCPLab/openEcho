@@ -1,0 +1,18 @@
+from Compiler.types import *
+from Compiler.library import *
+import random
+
+TEST_SIZE = 1 << 8
+ROUNDS = 5
+
+a = MemValue(sint(random.getrandbits(32)))
+b = MemValue(sint(random.getrandbits(32)))
+
+for _ in range(ROUNDS):
+    c = Array(TEST_SIZE, sint)
+    @for_range_opt_multithread(16, TEST_SIZE)
+    def _(i):
+        c[i] = a * b
+    ci = sum(c)
+    print_ln("result: %s", ci.reveal())
+

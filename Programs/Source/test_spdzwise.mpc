@@ -1,0 +1,8 @@
+# Simple test for SpdzWise protocol
+from Compiler.types import sint
+
+# Simple multiplication test
+a = sint.get_random_triple()[0]
+b = sint.get_random_triple()[0]
+c = a * b
+print_ln("Result: %s", c.reveal())

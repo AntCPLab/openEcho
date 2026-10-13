@@ -1,0 +1,27 @@
+from Compiler.types import *
+from Compiler.GC.types import *
+from Compiler.library import *
+
+import sys
+
+print(program.args)
+
+try:
+    n_threads = int(program.args[1])
+except:
+    n_threads = 16
+
+sb64 = sbits.get_type(64)
+n = 160000
+a = sb64.Array(n)
+b = sb64.Array(n)
+c = sb64.Array(n)
+bits = regint.inc(n)
+a.assign_vector(bits)
+b.assign_vector(bits)
+
+@multithread(n_threads, n)
+def _(base, size):
+    c.assign_vector(a.get_vector(base, size) & b.get_vector(base, size), base)
+
+print_ln('%s', c[2].reveal())

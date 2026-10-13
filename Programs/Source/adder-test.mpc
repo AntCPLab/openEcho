@@ -1,0 +1,17 @@
+from Compiler.types import *
+from Compiler.library import *
+from Compiler.GC.types import *
+
+sb1 = sbits.get_type(1)
+a = sb1(1)
+b = sb1(1)
+c = sb1(0)
+
+s, carry = sbitint.full_adder(a, b, c)
+
+print_ln("s = %s, carry = %s", s.reveal(), carry.reveal())
+print_ln("expected: s = 0, carry = 1")
+
+s, carry = sbitint.half_adder(a, b)
+print_ln("s = %s, carry = %s", s.reveal(), carry.reveal())
+print_ln("expected: s = 0, carry = 1")

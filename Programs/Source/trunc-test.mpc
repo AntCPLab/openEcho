@@ -1,0 +1,18 @@
+program.use_trunc_pr = True
+program.use_mulm = False
+
+from Compiler.types import *
+from Compiler.library import *
+
+import random
+
+
+TEST_SIZE = 5
+
+clears = [random.getrandbits(32) for _ in range(TEST_SIZE)]
+x = [sint(clear) for clear in clears]
+offsets = [random.randint(4, 17) for _ in range(TEST_SIZE)]
+results = [xi >> offset for xi, offset in zip(x, offsets)]
+
+for i, each in enumerate(results):
+    print_ln("result: %s, should be: %s", each.reveal(), clears[i] >> offsets[i])

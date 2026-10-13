@@ -1,0 +1,40 @@
+from Compiler.types import *
+from Compiler.library import *
+import random
+
+program.trunc_pr = False
+
+VEC_LENGTH = 1 << 3
+TEST_SIZE = 1 << 4
+ROUNDS = 2
+
+a = Array(VEC_LENGTH, sint)
+b = Array(VEC_LENGTH, sint)
+for i in range(VEC_LENGTH):
+    a[i] = sint(random.getrandbits(32))
+    b[i] = sint(random.getrandbits(32))
+
+ai = [sint(random.getrandbits(32)) for _ in range(100)]
+bi = [sint(random.getrandbits(32)) for _ in range(100)]
+ci = []
+
+for _ in range(ROUNDS):
+    c = Array(TEST_SIZE, sint)
+    for i in range(TEST_SIZE):
+        c[i] = sint.dot_product(a, b)
+    c = sum(c)
+    print_ln("result: %s", c.reveal())
+
+    for i in range(100):
+        ci.append(ai[i] * bi[i])
+    print_ln("should be: %s", sum(ci).reveal())
+
+
+sfix.set_precision(16, 31)
+sfix.round_nearest = True
+
+a = sfix(1.234)
+b = sfix(2.345)
+c = a * b
+print_ln("sfix result: %s, should be: %s", c.reveal(), (1.234 * 2.345))
+

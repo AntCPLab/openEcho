@@ -1,0 +1,14 @@
+from Compiler.types import *
+from Compiler.library import *
+
+import random
+
+TEST_SIZE = 5
+
+x_clear = [random.getrandbits(32) for _ in range(TEST_SIZE)]
+y_clear = [random.getrandbits(32) for _ in range(TEST_SIZE)]
+x = [sint(clear) for clear in x_clear]
+y = [sint(clear) for clear in y_clear]
+results = [xi < yi for xi, yi in zip(x, y)]
+for i, each in enumerate(results):
+    print_ln("result: %s, should be: %s", each.reveal(), x_clear[i] < y_clear[i])

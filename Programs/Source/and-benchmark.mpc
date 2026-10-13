@@ -1,0 +1,16 @@
+from Compiler.types import *
+from Compiler.library import *
+from Compiler.GC.types import *
+import random
+
+sb64 = sbits.get_type(64)
+
+TEST_SIZE = 1 << 20
+
+a = [sb64(random.getrandbits(64)) for _ in range(TEST_SIZE)]
+b = [sb64(random.getrandbits(64)) for _ in range(TEST_SIZE)]
+
+for ai, bi in zip(a, b):
+    c = ai & bi
+
+print_ln('c = %s', c.reveal())
